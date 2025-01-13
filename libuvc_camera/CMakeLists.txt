@@ -15,6 +15,11 @@ if(NOT libuvc_LIBRARIES)
   message(FATAL_ERROR "could not find expected libuvc libraries in package")
 endif()
 
+# this is needed to get the libuvc libraries in libuvc 0.0.7
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(libuvc REQUIRED libuvc)
+message(STATUS "libuvc libraries ${libuvc_LIBRARIES}")
+
 catkin_package(
   CATKIN_DEPENDS
     roscpp
